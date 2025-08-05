@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--If scope is prototype only when we do get beans the object will be created
+<bean id="alien1" class="com.telusko.Alien" scope="prototype">
+</bean>-->
+    <bean id="alien1" class="com.telusko.Alien" autowire="byType">
+       <!--
+        <bean id="alien1" class="com.telusko.Alien" autowire="byName">
+        <constructor-arg index="0" value="21"/>
+        <constructor-arg index="1" ref="lap1"/>
+        <property name="com" ref="lap1"></property>
+       </property>-->
+        <property name="age" value="20"></property>
+        <property name="com" ref="com1"></property>
+    </bean>
+    <!--Id is optional
+    <bean id="lap1" class="com.telusko.Laptop">
+    </bean>
+    <bean id="lap2" class="com.telusko.Laptop">
+    </bean>
+    -->
+    <bean id="com1" class="com.telusko.Laptop" primary="true"></bean>
+    <bean id="com2" class="com.telusko.Desktop" lazy-init="true"></bean>
+</beans>
